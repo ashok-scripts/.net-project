@@ -9,12 +9,7 @@ namespace Xunit
     {
         public static void CollectionLength<T>(IEnumerable<T> collection, int expectedCount)
         {
-            int actualCount = collection.Count();
-
-            if (actualCount != expectedCount)
-            {
-                throw new CollectionException(collection, expectedCount, actualCount);
-            }
+            throw CollectionException.ForMismatchedItemCount(expectedCount, collection.Count(), "Collection lengths not equal.");
         }
 
         public static void CollectionLength(IEnumerable collection, int expectedCount)
